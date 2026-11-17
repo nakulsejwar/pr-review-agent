@@ -2,6 +2,8 @@
 
 An agent that reviews a git diff / PR and returns **structured feedback**: bugs, risks, missing tests, style issues — each with severity, file, line, evidence and a concrete fix.
 
+### Live URL: https://pr-review-agent-weld.vercel.app/
+
 ## What it does
 ```
 python -m reviewer.cli samples/login.diff -v          # file / stdin
