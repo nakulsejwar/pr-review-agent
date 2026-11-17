@@ -4,3 +4,4 @@ fastapi
 uvicorn
 pyflakes
 pytest
+python-dotenv

@@ -1,4 +1,7 @@
 """Tiny web demo: paste a diff, get the review.  `uvicorn app:app --reload`"""
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
@@ -32,5 +35,11 @@ def review(req: Req):
     except ValueError as e:
         raise HTTPException(400, str(e))
     except Exception as e:
-        raise HTTPException(502, f"Review failed: {type(e).__name__}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(502, f"Review failed: {type(e).__name__}: {e}")
     return {"markdown": to_markdown(rep), "report": rep.model_dump(), "trace": agent.trace}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)

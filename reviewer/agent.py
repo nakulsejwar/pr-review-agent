@@ -7,6 +7,10 @@ by pydantic with retry-with-feedback, then grounded against the diff.
 """
 from __future__ import annotations
 import json, os, re, time
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from google import genai
 from google.genai import types
 from pydantic import ValidationError
@@ -36,7 +40,10 @@ Rules:
 
 class ReviewAgent:
     def __init__(self, client=None, model: str = DEFAULT_MODEL, repo_root: str | None = None, verbose: bool = False):
-        self.client = client or genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        self.client = client or genai.Client(
+            api_key=os.environ["GEMINI_API_KEY"],
+            http_options={"api_version": "v1beta"}
+        )
         self.model, self.repo_root, self.verbose = model, repo_root, verbose
         self.trace: list[dict] = []
 
