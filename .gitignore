@@ -1,0 +1,55 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging and build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+.wheels/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Vercel local configuration and build output
+.vercel/
+
+# Local databases and generated review output
+*.sqlite
+*.sqlite3
+*.db
+review-output/
